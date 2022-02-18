@@ -1,9 +1,10 @@
 import React from "react";
 import { useState } from "react";
 import { saveData } from "../actions";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function LandingPage() {
+  const stateData = useSelector((state) => state.data);
   const [data, setData] = useState({ data: "" });
   const dispatch = useDispatch();
 
@@ -26,6 +27,7 @@ export default function LandingPage() {
     <div>
       <input type="text" onChange={(e) => handleChange(e)} />
       <button onClick={(e) => handleClick(e)}>S A V E</button>
+      <div>{`${stateData}`}</div>
     </div>
   );
 }
