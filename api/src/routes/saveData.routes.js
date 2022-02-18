@@ -1,16 +1,14 @@
 const { Router } = require("express");
 const route = Router();
 const saveData = require("../controllers/saveSomethign.controller.js");
-route.post("/", (req, res) => {
+route.get("/", (req, res) => {
   try {
-    const { data } = req.body;
-    if (data) {
-      saveData(data);
-      console.log(`${data} saved in backend`);
-      res.send(`${data} saved in backend`);
-    }
+    console.log(`in backend`);
+    res.json({
+      url: "https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=1068887150-c94e3f7d-1a8c-454e-81ba-9441ed9e33d0%27'",
+    });
   } catch (error) {
-    showErrors("post/saveData", error);
+    console.log("post/saveData", error);
     return 500;
   }
 });
